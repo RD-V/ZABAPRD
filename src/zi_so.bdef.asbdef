@@ -1,0 +1,44 @@
+managed implementation in class zbp_i_so unique;
+strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZI_SO alias SalesOrder
+persistent table zsalesorder
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+  //field (numbering : managed)
+  //   Soid;
+
+  field ( mandatory : create )
+  Soid;
+
+  field ( readonly : update )
+  Soid;
+
+  field ( readonly )
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  create;
+  update;
+  delete;
+
+  action GetCustomer;
+
+  mapping for zsalesorder
+    {
+      Soid               = sales_order_id;
+      Customerid         = customer_id;
+      Customername       = customer_name;
+      Producttype        = product_type;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = locl_last_changed_at;
+    }
+}

@@ -1,0 +1,76 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'DataModel', 
+    typeNamePlural: 'DataModels'
+  }
+}
+annotate view ZC_ACONN with
+{
+  @UI.facet: [ {
+    id: 'idIdentification', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'DataModel', 
+    position: 10 
+  } ]
+  @UI.hidden: true
+  UUID;
+  
+  @UI.lineItem: [ {
+    position: 10 , 
+    importance: #MEDIUM, 
+    label: 'CarrierID'
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'CarrierID'
+  } ]
+  CarrierID;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #MEDIUM, 
+    label: 'ConnectionID'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ConnectionID'
+  } ]
+  ConnectionID;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #MEDIUM, 
+    label: 'AirportFromID'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'AirportFromID'
+  } ]
+  AirportFromID;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #MEDIUM, 
+    label: 'CityFrom'
+  } ]
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'CityFrom'
+  } ]
+  CityFrom;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #MEDIUM, 
+    label: 'CountryFrom'
+  } ]
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'CountryFrom'
+  } ]
+  CountryFrom;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

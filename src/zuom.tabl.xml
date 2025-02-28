@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TABL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD02V>
+    <TABNAME>ZUOM</TABNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <TABCLASS>INTTAB</TABCLASS>
+    <DDTEXT>Extension Include Custom UOM</DDTEXT>
+    <MASTERLANG>E</MASTERLANG>
+    <EXCLASS>4</EXCLASS>
+    <FIELD_SUFFIX>ZAG</FIELD_SUFFIX>
+    <QUOTA_MAX_FIELDS>00350</QUOTA_MAX_FIELDS>
+    <QUOTA_MAX_BYTES>0003500</QUOTA_MAX_BYTES>
+   </DD02V>
+   <DD03P_TABLE>
+    <DD03P>
+     <FIELDNAME>Z_UOM</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>P</INTTYPE>
+     <INTLEN>000006</INTLEN>
+     <DATATYPE>DEC</DATATYPE>
+     <LENG>000010</LENG>
+     <DECIMALS>000002</DECIMALS>
+     <MASK>  DEC</MASK>
+    </DD03P>
+   </DD03P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

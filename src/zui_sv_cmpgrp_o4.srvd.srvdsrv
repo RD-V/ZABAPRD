@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_SV_CMPGRP'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_SV_CMPGRP'
+  }
+}
+define service ZUI_SV_CMPGRP_O4 provider contracts odata_v4_ui {
+  expose ZC_SV_CMPGRP;
+}

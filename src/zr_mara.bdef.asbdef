@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_MARA unique;
+strict ( 2 );
+//with draft;
+define behavior for ZR_MARA alias ZrMara
+persistent table ZMARA
+//draft table ZMARA_D
+etag master LocalLastChangedAt
+lock master //total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Zproduct;
+
+  field ( readonly )
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( readonly : update )
+   Zproduct;
+
+
+  create;
+  update;
+  delete;
+
+//  draft action Activate optimized;
+//  draft action Discard;
+//  draft action Edit;
+//  draft action Resume;
+//  draft determine action Prepare;
+
+  mapping for ZMARA
+  {
+    Zproduct = zproduct;
+    Zproductname = zproductname;
+    LocalCreatedBy = local_created_by;
+    LocalCreatedAt = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+}

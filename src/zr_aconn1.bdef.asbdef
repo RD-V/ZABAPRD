@@ -1,0 +1,50 @@
+managed implementation in class ZBP_R_ACONN1 unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_ACONN1
+persistent table zaconn1
+draft table ZACONN1_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   ID;
+
+  field ( readonly )
+   LocalCreatedAt,
+   LocalCreatedBy,
+   LastChangedAt,
+   LocalLastChangedAt,
+   LocalLastChangedBy;
+
+  field ( readonly : update )
+   ID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZACONN1
+  {
+    ID = id;
+    CarrierID = carrier_id;
+    ConnectionID = connection_id;
+    AirportFromID = airport_from_id;
+    CityFrom = city_from;
+    CountryFrom = country_from;
+    LocalCreatedBy = local_created_by;
+    LocalCreatedAt = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+}

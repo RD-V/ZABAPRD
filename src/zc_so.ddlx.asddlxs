@@ -1,0 +1,117 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Sales order', typeNamePlural: 'Sales orders',
+     title: { type: #STANDARD ,label: 'Sales order List', value: 'Producttype' }}
+}
+
+annotate view ZC_SO with
+{
+  @UI.facet: [
+                   {
+                     id: 'SalesOrderID',
+                     purpose: #HEADER,
+                     type: #DATAPOINT_REFERENCE,
+                     position: 10,
+                     targetQualifier: 'SysSalesOrderID'
+                    },
+                    {
+                      label: 'General Information',
+                      id: 'GeneralInfo',
+                      type: #COLLECTION,
+                      position: 10
+                   },
+                   {
+                      id: 'salesorderInfo',
+                      purpose:#STANDARD,
+                      type: #IDENTIFICATION_REFERENCE,
+                      label: 'Sales Order Details',
+                      position: 10,
+                      parentId: 'GeneralInfo'
+                   },
+                     {
+                      id: 'adminInfo',
+                      purpose:#STANDARD,
+                      type: #FIELDGROUP_REFERENCE,
+                      label: 'Admin Details',
+                      position: 20,
+                      parentId: 'GeneralInfo',
+                      targetQualifier: 'adminInfo'
+                   }
+              ]
+
+  @EndUserText.label: 'Sales order ID'
+  @UI.identification: [{ position: 10 }]
+  @UI.fieldGroup: [{ qualifier: 'salesorderInfo', position: 10 }]
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 10}]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.dataPoint: { qualifier: 'SysSalesOrderID', title: 'SalesOrder ID'}
+  Soid;
+
+  @EndUserText.label: 'Customer id'
+  @UI.identification: [{ position: 20 }]
+  @UI.fieldGroup: [{ qualifier: 'salesorderInfo', position: 20 }]
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 20}]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.textArrangement: #TEXT_ONLY
+
+  @Consumption.valueHelpDefinition: [{ entity : {name: 'I_Customer', element: 'Customer'  } }]
+  Customerid;
+
+  @EndUserText.label: 'Customer name'
+  @UI.identification: [{ position: 30 }]
+  @UI.fieldGroup: [{ qualifier: 'salesorderInfo', position: 30 }]
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 30}]
+  @UI.selectionField: [{ position: 30 }]
+  Customername;
+
+  @EndUserText.label: 'Product type'
+  @UI.identification: [{ position: 40 }]
+  @UI.fieldGroup: [{ qualifier: 'salesorderInfo', position: 40 }]
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 40}]
+  @UI.selectionField: [{ position: 40 }]
+
+  @Consumption.valueHelpDefinition:
+  [{ entity: { name : 'ZI_DOMAIN_FIX_VALUE' , element: 'description' } ,
+     additionalBinding: [{ element: 'domain_name',
+                           localConstant: 'ZPRODTYPE', usage: #FILTER }]
+                           , distinctValues: true
+                           }]
+  Producttype;
+  //
+  //  @UI: {
+  //  identification: [ { position: 100 }
+  //              ,{ type: #FOR_ACTION, dataAction: 'GetCustomer', label: 'Get Customer' } ],
+  //  textArrangement: #TEXT_ONLY
+  //    }
+
+  @EndUserText.label: 'Created By'
+  @UI.fieldGroup: [{ qualifier: 'adminInfo', position: 10 }]
+  @Search.defaultSearchElement: true
+  CreatedBy;
+
+  @EndUserText.label: 'Created At'
+  @UI.fieldGroup: [{ qualifier: 'adminInfo', position: 20 }]
+  @Search.defaultSearchElement: true
+  CreatedAt;
+
+  @EndUserText.label: 'Last Changed By'
+  @UI.fieldGroup: [{ qualifier: 'adminInfo', position: 30 }]
+  @Search.defaultSearchElement: true
+  LastChangedBy;
+
+  @EndUserText.label: 'Last Changed At'
+  @UI.fieldGroup: [{ qualifier: 'adminInfo', position: 40 }]
+  @Search.defaultSearchElement: true
+  LastChangedAt;
+
+  @EndUserText.label: 'Local Last Changed At'
+  @UI.fieldGroup: [{ qualifier: 'adminInfo', position: 50 }]
+  @Search.defaultSearchElement: true
+  LocalLastChangedAt;
+
+}
